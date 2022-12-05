@@ -1,6 +1,7 @@
 # MusicPlayer (using State Pattern & Command Pattern)
 
 The project `Music Player`.
+
 Available commands: `TURN ON`, `TURN OFF`, `PLAY`, `STOP`, `NEXT`, `PREV`, `STATUS`, `QUIT`.
 
 During the development, an external `java.media.jmf` library was used (for working with files).
