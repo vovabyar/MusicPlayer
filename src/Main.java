@@ -18,6 +18,7 @@ public class Main {
 
     public static class CLI implements Runnable {
         private MusicPlayer player;
+        private CommandHistory history = new CommandHistory();
 
         public CLI(MusicPlayer player) {
             this.player = player;
@@ -25,7 +26,7 @@ public class Main {
 
         private void executeCommand(Command command) {
             if (command.execute()) {
-                //history.push(command);
+                history.push(command);
             }
         }
         @Override
@@ -38,7 +39,7 @@ public class Main {
                 System.out.println(player.status());
                 System.out.println("------------------------------");
                 System.out.println("Available commands: TURN ON, TURN OFF, PLAY, STOP, NEXT, PREV, STATUS, QUIT");
-                System.out.print("Prompt> ");
+                System.out.print("Choose command-> ");
                 command = keyboard.nextLine().toLowerCase();
 
                 switch (command) {
@@ -68,10 +69,10 @@ public class Main {
                         isRunning = false;
                         break;
                     default:
-                        System.out.println("[Invalid command]");
+                        System.out.println("Invalid command!");
                 }
             }
-            System.out.println("[Terminated]");
+            System.out.println("!Terminated!");
             if (player.isPlaying()) player.stop();
             System.exit(0);
         }
